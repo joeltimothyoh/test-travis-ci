@@ -1,5 +1,5 @@
 ARG IMAGE
-From ubuntu:16.04
+From $IMAGE
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG STEAMCMD_DIR=/steamcmd

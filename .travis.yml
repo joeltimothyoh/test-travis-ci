@@ -20,5 +20,7 @@ script:
   - docker run debian:test /bin/sh -c "pwd && ls -al"
   - docker images
 
+  - date
+
 after_script:
   - date
