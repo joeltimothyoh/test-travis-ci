@@ -14,7 +14,8 @@ before_script:
 script:
   - date 
   - docker build -t ubuntu:test build/ --build-arg IMAGE=ubuntu:16.04
-  - docker run ubuntu:test /bin/sh -c "steamcmd.sh +login anonymous +force_install_dir /app +app_update 90 validate +quit"
+  - docker run --name testcontainer ubuntu:test /bin/sh -c "steamcmd.sh +login anonymous +force_install_dir /app +app_update 222860 validate +quit"
+  - docker commit testcontainer testcontainer:latest
   - docker images
 
   - date
