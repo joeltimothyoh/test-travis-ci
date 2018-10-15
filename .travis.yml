@@ -10,15 +10,17 @@ before_script:
   - whoami
   - docker version
   - cat /proc/version
+  - echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
 
 script:
   - date 
-  - docker build -t ubuntu:test build/ --build-arg IMAGE=ubuntu:16.04
-  - docker run --name testcontainer ubuntu:test /bin/sh -c "steamcmd.sh +login anonymous +force_install_dir /app +app_update 222860 validate +quit"
-  - docker commit testcontainer testcontainer:latest
-  - docker images
+  #- docker build -t ubuntu:test build/ --build-arg IMAGE=ubuntu:16.04
+  #- docker run --name testcontainer ubuntu:test /bin/sh -c "steamcmd.sh +login anonymous +force_install_dir /app +app_update 222860 validate +quit"
+  #- docker commit testcontainer testcontainer:latest
+  #- docker images
 
   - date
 
 after_script:
   - date
+  - docker logout
