@@ -11,10 +11,14 @@ before_script:
   - docker version
 
 script:
-  - date
+  - date 
   - docker images
-  - docker build -t image:test build/
-  - docker run -it image:test /bin/sh -c "pwd && ls -al"
+  - docker build -t ubuntu:test build/
+  - docker run image:test /bin/sh -c "pwd && ls -al"
+  - docker pull debian
+  - docker build -t debian:test build/
+  - docker run debian:test /bin/sh -c "pwd && ls -al"
+    - docker images
 
-after_install:
+after_script:
   - date
