@@ -13,17 +13,27 @@ before_script:
   - echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
 
 script:
-  - date 
-  - docker pull alpine
-  - docker tag alpine $REGISTRY_USER/alpine2:test
-  - docker push $REGISTRY_USER/alpine2:test
+  - date
+
+  - docker build -t steam1:test build/ --build-arg IMAGE=ubuntu:16.04
+  - date
+  - docker images
+  - docker push $REGISTRY_USER/steam1:test
+  - date
+
+  - docker build -t game1:test build2/
+  - date
+  - docker images
+  - docker push $REGISTRY_USER/game1:test
+  - date
+
+  #- docker pull alpine
+  #- docker tag alpine $REGISTRY_USER/alpine2:test
+  #- docker push $REGISTRY_USER/alpine2:test
   #- docker build -t ubuntu:test build/ --build-arg IMAGE=ubuntu:16.04
   #- docker run --name testcontainer ubuntu:test /bin/sh -c "steamcmd.sh +login anonymous +force_install_dir /app +app_update 222860 validate +quit"
-  #- docker commit testcontainer testcontainer:latest
   #- docker images
 
-  - date
 
 after_script:
-  - date
   - docker logout
