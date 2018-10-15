@@ -12,6 +12,7 @@ before_script:
 
 script:
   - date
+  - docker images
   - docker build -t image:test build/
   - docker run -it image:test /bin/sh -c "pwd && ls -al"
 
