@@ -1,0 +1,19 @@
+sudo: required
+
+services:
+  - docker
+
+stages:
+  - build
+
+before_script:
+  - whoami
+  - docker version
+
+script:
+  - date
+  - docker build -t alpine:test build/
+  - docker run -it alpine:test /bin/sh -c "pwd && ls -al"
+
+after_install:
+  - date
