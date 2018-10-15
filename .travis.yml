@@ -21,7 +21,7 @@ script:
   - docker push "$REGISTRY_USER/steam1:test"
   - date
 
-  - docker build -t "game1:test" build2/ --build-arg "IMAGE=steam1:test"
+  - docker build -t "game1:test" build2/
   - date
   - docker images
   - docker push "$REGISTRY_USER/game1:test"
