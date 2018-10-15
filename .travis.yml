@@ -12,8 +12,8 @@ before_script:
 
 script:
   - date
-  - docker build -t alpine:test build/
-  - docker run -it alpine:test /bin/sh -c "pwd && ls -al"
+  - docker build -t image:test build/
+  - docker run -it image:test /bin/sh -c "pwd && ls -al"
 
 after_install:
   - date
