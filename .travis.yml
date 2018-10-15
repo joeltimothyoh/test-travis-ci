@@ -9,6 +9,7 @@ stages:
 before_script:
   - whoami
   - docker version
+  - cat /proc/version
 
 script:
   - date 
