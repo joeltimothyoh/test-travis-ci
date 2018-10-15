@@ -12,13 +12,13 @@ before_script:
 
 script:
   - date 
-  - docker images
-  - docker build -t ubuntu:test build/
+  - docker build -t ubuntu:test build/ --build-arg IMAGE=ubuntu:16.04
   - docker run ubuntu:test /bin/sh -c "pwd && ls -al"
-  - docker pull debian
-  - docker build -t debian:test build/
+  - docker images
+
+  - docker build -t debian:test build/ --build-arg IMAGE=debian:jessie
   - docker run debian:test /bin/sh -c "pwd && ls -al"
-    - docker images
+  - docker images
 
 after_script:
   - date
