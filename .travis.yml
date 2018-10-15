@@ -34,6 +34,5 @@ script:
   #- docker run --name testcontainer ubuntu:test /bin/sh -c "steamcmd.sh +login anonymous +force_install_dir /app +app_update 222860 validate +quit"
   #- docker images
 
-
 after_script:
   - docker logout
