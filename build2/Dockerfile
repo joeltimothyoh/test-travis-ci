@@ -1,4 +1,6 @@
-From steam2:test
+ARG IMAGE
+From $IMAGE
+
 
 RUN steamcmd.sh +login anonymous +force_install_dir /app +app_update 222860 validate +quit
 
