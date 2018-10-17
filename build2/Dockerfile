@@ -1,7 +1,5 @@
-ARG IMAGE
-From $IMAGE
+From theohbrothers/steamcmd
 
-
-RUN steamcmd.sh +login anonymous +force_install_dir /app +app_update 222860 validate +quit
+RUN steamcmd.sh +login anonymous +force_install_dir /server +app_update 740 validate +quit
 
 ENV LD_LIBRARY_PATH .:bin:$LD_LIBRARY_PATH

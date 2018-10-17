@@ -15,16 +15,16 @@ before_script:
 script:
   - date
 
-  - docker build -t "$REGISTRY_USER/steam1" build/ --build-arg IMAGE=ubuntu:16.04
-  - date
-  - docker images
-  - docker push "$REGISTRY_USER/steam1"
-  - date
+  # - docker build -t "$REGISTRY_USER/steam1" build/ --build-arg IMAGE=ubuntu:16.04
+  # - date
+  # - docker images
+  # - docker push "$REGISTRY_USER/steam1"
+  # - date
 
-  - docker build -t "$REGISTRY_USER/game1" build2/ --build-arg "IMAGE=$REGISTRY_USER/steam1"
+  - docker build -t "$REGISTRY_USER/csgotest" build2/
   - date
   - docker images
-  - docker push "$REGISTRY_USER/game1"
+  - docker push "$REGISTRY_USER/csgotest"
   - date
 
   #- docker pull alpine
