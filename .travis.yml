@@ -6,16 +6,24 @@ services:
 stages:
   - build
 
+env:
+  global:
+    - test=1
+    - BAR="test2
+    - BAZ=test3
+    
 before_script:
   - whoami
   - docker version
   - cat /proc/version
   - df -h
-  - echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
+  #- echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
 
 script:
-  - echo $TESTVAR
   - date
+  - echo $test
+  - echo $BAR
+  - echo $BAZ
 
 after_script:
-  - docker logout
+  #- docker logout
