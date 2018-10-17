@@ -22,6 +22,7 @@ before_script:
 script:
   - date
   - echo $TESTVAR
+  - echo $TESTVAR2
   - echo $test
   - echo $BAR
   - echo $BAZ
