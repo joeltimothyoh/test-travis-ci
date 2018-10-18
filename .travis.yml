@@ -6,7 +6,7 @@ services:
 env:
   global:
     - g_var=globalvalue
-  matrix: 
+  matrix:
     - foo=1 bar=2
     #- foo=3 bar=4
 
@@ -32,7 +32,7 @@ script:
 
   - REGISTRY_ORG='goldsourceservers'
   - docker pull alpine
-  - docker tag alpine $REGISTRY_USER/alpine2:test
+  - docker tag alpine $REGISTRY_ORG/alpine2:test
   - docker push $REGISTRY_ORG/alpine2:test
 
 after_script:
