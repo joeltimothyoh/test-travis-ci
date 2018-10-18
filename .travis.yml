@@ -27,9 +27,8 @@ script:
   # - docker push "$REGISTRY_USER/steam1"
   # - date
 
-  #- docker build -t "$REGISTRY_USER/csgotest" build2/
-  #- date
-  #- docker images
+  - docker build -t "$REGISTRY_USER/csgotest" build2/
+  - docker images
   #- travis_wait 20 docker push "$REGISTRY_USER/csgotest"
   #- date
 
