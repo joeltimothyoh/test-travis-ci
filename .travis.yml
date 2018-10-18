@@ -4,8 +4,11 @@ services:
   - docker
 
 env:
-  - foo=1 bar=1
-  - foo=2 bar=2
+  global:
+    - g_var=g_value1
+  matrix: 
+    - foo=1 bar=2
+    - foo=3 bar=4
 
 stages:
   - build
@@ -19,26 +22,17 @@ before_script:
   #- echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
 
 script:
+  - echo $g_var
   - echo $foo && echo $bar
-  - date
 
-  # - docker build -t "$REGISTRY_USER/steam1" build/ --build-arg IMAGE=ubuntu:16.04
-  # - date
-  # - docker images
-  # - docker push "$REGISTRY_USER/steam1"
-  # - date
-
-  - docker build -t "$REGISTRY_USER/csgotest" build2/
-  - docker images
-  #- travis_wait 20 docker push "$REGISTRY_USER/csgotest"
+  #- docker build -t "$REGISTRY_USER/csgotest" build2/
+  #- docker images
+  #- travis_wait 20 docker push "$REGISTRY_USER/gametest"
   #- date
 
   #- docker pull alpine
   #- docker tag alpine $REGISTRY_USER/alpine2:test
   #- docker push $REGISTRY_USER/alpine2:test
-  #- docker build -t ubuntu:test build/ --build-arg IMAGE=ubuntu:16.04
-  #- docker run --name testcontainer ubuntu:test /bin/sh -c "steamcmd.sh +login anonymous +force_install_dir /app +app_update 222860 validate +quit"
-  #- docker images
 
 after_script:
   - docker logout
