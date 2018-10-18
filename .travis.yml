@@ -3,17 +3,22 @@ language: bash
 services:
   - docker
 
-stages:
-  - build
+env:
+  - foo=1 bar=1
+  - foo=2 bar=2
+
+#stages:
+#  - build
 
 before_script:
   - whoami
   - docker version
   - cat /proc/version
   - df -h
-  - echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
+  #- echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
 
 script:
+  - echo $foo && echo $bar
   - date
 
   # - docker build -t "$REGISTRY_USER/steam1" build/ --build-arg IMAGE=ubuntu:16.04
@@ -22,9 +27,9 @@ script:
   # - docker push "$REGISTRY_USER/steam1"
   # - date
 
-  - docker build -t "$REGISTRY_USER/csgotest" build2/
-  - date
-  - docker images
+  #- docker build -t "$REGISTRY_USER/csgotest" build2/
+  #- date
+  #- docker images
   #- travis_wait 20 docker push "$REGISTRY_USER/csgotest"
   #- date
 
@@ -36,4 +41,4 @@ script:
   #- docker images
 
 after_script:
-  - docker logout
+  #- docker logout
