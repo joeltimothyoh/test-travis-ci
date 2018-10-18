@@ -15,6 +15,7 @@ before_script:
   - docker version
   - cat /proc/version
   - df -h
+  - free
   #- echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
 
 script:
