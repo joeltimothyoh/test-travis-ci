@@ -32,8 +32,8 @@ script:
 
   - REGISTRY_ORG='goldsourceservers'
   - docker pull alpine
-  - docker tag alpine $REGISTRY_ORG/alpine2:test
-  - docker push $REGISTRY_ORG/alpine2:test
+  - docker tag alpine $REGISTRY_ORG/alpine:test
+  - docker push $REGISTRY_ORG/alpine:test
 
 after_script:
   - docker logout
