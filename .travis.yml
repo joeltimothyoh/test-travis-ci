@@ -19,7 +19,7 @@ before_script:
   - cat /proc/version
   - df -h
   - free
-  #- echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
+  - echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
 
 script:
   - echo $g_var
@@ -33,7 +33,7 @@ script:
   - REGISTRY_ORG='goldsourceservers'
   - docker pull alpine
   - docker tag alpine $REGISTRY_ORG/alpine:test
-  - docker push $REGISTRY_ORG/alpine:test
+  - docker push $REGISTRY_ORG/alpine
 
 after_script:
   - docker logout
