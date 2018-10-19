@@ -53,7 +53,7 @@ script:
   # - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf -ip 0.0.0.0 +maxplayers 8 +map mvm_decoy +quit"
   # - date
 
-  - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf +version +quit"
+  - docker run --rm "$REGISTRY_SOURCE/tf" "apt-get update && apt-get install libstdc++6:i386 && exec srcds_linux -game tf +version +quit"
   - date
 
   - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_run -game tf +version"
