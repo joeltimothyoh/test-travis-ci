@@ -53,16 +53,16 @@ script:
   # - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf -ip 0.0.0.0 +maxplayers 8 +map mvm_decoy +quit"
   # - date
 
-  - docker run --rm "$REGISTRY_SOURCE/tf" "apt-get update && apt-get install -y libstdc++6:i386 && exec srcds_linux -game tf +version +quit"
+  - docker run --rm "$REGISTRY_SOURCE/tf" "apt-get update && apt-get install -y libstdc++6:i386 && linux32 --32bit i386 srcds_linux -game tf +version +quit"
   - date
 
-  - docker run --rm "$REGISTRY_SOURCE/tf" "apt-get update && apt-get install -y libstdc++6:i386 libcurl4-gnutls-dev:i386 && exec srcds_linux -game tf +version +quit"
+  - docker run --rm "$REGISTRY_SOURCE/tf" "apt-get update && apt-get install -y libstdc++6:i386 libcurl4-gnutls-dev:i386 && linux32 --32bit i386 srcds_linux -game tf +version +quit"
   - date
 
-  - docker run --rm "$REGISTRY_SOURCE/tf" "apt-get update && apt-get install -y libcurl4-gnutls-dev:i386 && exec srcds_linux -game tf +version +quit"
+  - docker run --rm "$REGISTRY_SOURCE/tf" "apt-get update && apt-get install -y libcurl4-gnutls-dev:i386 && linux32 --32bit i386 srcds_linux -game tf +version +quit"
   - date
 
-  - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_run -game tf +version"
+  - docker run --rm "$REGISTRY_SOURCE/tf" "linux32 --32bit i386 srcds_run -game tf +version"
   - date
 
   #- docker tag alpine $REGISTRY_ORG/alpine:test
