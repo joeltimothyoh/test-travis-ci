@@ -30,9 +30,32 @@ script:
   #- travis_wait 20 docker push "$REGISTRY_USER/gametest"
   #- date
 
-  - REGISTRY_ORG='goldsourceservers'
-  - docker pull alpine
-  - docker tag alpine $REGISTRY_ORG/alpine:test
+  #- REGISTRY_GOLDSOURCE='goldsourceservers'
+  - REGISTRY_SOURCE='sourceservers'
+  - docker pull "$REGISTRY_SOURCE/tf"
+  - docker run --rm "$REGISTRY_SOURCE/tf" "printenv && ls -al &&0 ls -al tf/ hl2/"
+  - date
+
+  - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf +version +quit"
+  - date
+
+  - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf -ip 0.0.0.0 +quit"
+  - date
+
+  - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf -ip 0.0.0.0 +maxplayers 8 +quit"
+  - date
+
+  - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf -ip 0.0.0.0 +maxplayers 8 +map mvm_decoy +quit"
+  - date
+
+  - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf -ip 0.0.0.0 +maxplayers 8 +map mvm_decoy +quit"
+  - date
+
+  - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_run -game tf -ip 0.0.0.0 +maxplayers 8 +map mvm_decoy +quit"
+  - date
+
+
+  #- docker tag alpine $REGISTRY_ORG/alpine:test
   - docker push $REGISTRY_ORG/alpine
 
 after_script:
