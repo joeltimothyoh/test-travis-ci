@@ -33,25 +33,27 @@ script:
   #- REGISTRY_GOLDSOURCE='goldsourceservers'
   - REGISTRY_SOURCE='sourceservers'
   - docker pull "$REGISTRY_SOURCE/tf"
-  - docker run --rm "$REGISTRY_SOURCE/tf" "printenv && ls -al &&0 ls -al tf/ hl2/"
-  - date
+  - docker images
 
-  - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf +version +quit"
-  - date
+  # - docker run --rm "$REGISTRY_SOURCE/tf" "printenv && ls -al &&0 ls -al tf/ hl2/"
+  # - date
 
-  - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf -ip 0.0.0.0 +quit"
-  - date
+  # - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf +version +quit"
+  # - date
 
-  - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf -ip 0.0.0.0 +maxplayers 8 +quit"
-  - date
+  # - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf -ip 0.0.0.0 +quit"
+  # - date
 
-  - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf -ip 0.0.0.0 +maxplayers 8 +map mvm_decoy +quit"
-  - date
+  # - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf -ip 0.0.0.0 +maxplayers 8 +quit"
+  # - date
 
-  - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf -ip 0.0.0.0 +maxplayers 8 +map mvm_decoy +quit"
-  - date
+  # - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf -ip 0.0.0.0 +maxplayers 8 +map mvm_decoy +quit"
+  # - date
 
-  - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_run -game tf -ip 0.0.0.0 +maxplayers 8 +map mvm_decoy +quit"
+  # - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf -ip 0.0.0.0 +maxplayers 8 +map mvm_decoy +quit"
+  # - date
+
+  - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_run -game tf -debug -ip 0.0.0.0 +maxplayers 8 +map mvm_decoy +quit"
   - date
 
 
