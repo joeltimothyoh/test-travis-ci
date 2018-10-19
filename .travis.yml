@@ -53,12 +53,14 @@ script:
   # - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf -ip 0.0.0.0 +maxplayers 8 +map mvm_decoy +quit"
   # - date
 
-  - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_run -game tf -debug -ip 0.0.0.0 +maxplayers 8 +map mvm_decoy +quit"
+  - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf +version +quit"
   - date
 
+  - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_run -game tf +version +quit"
+  - date
 
   #- docker tag alpine $REGISTRY_ORG/alpine:test
-  - docker push $REGISTRY_ORG/alpine
+  #- docker push $REGISTRY_ORG/alpine
 
 after_script:
   - docker logout
