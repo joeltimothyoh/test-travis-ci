@@ -3,6 +3,9 @@ language: bash
 services:
   - docker
 
+stages:
+  - build
+
 env:
   global:
     - g_var=globalvalue
@@ -26,7 +29,7 @@ script:
   - echo $STAGE
 
   - if [ "${STAGE}" = 'build' ]; then
-      BUILD_CONTEXT=${BUILD_DIR}
+      BUILD_CONTEXT=${BUILD_DIR};
     elif [ "${STAGE}" = 'build' ]; then
       BUILD_CONTEXT=${UPDATE_DIR};
     fi
