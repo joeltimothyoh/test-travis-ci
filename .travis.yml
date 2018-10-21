@@ -29,12 +29,12 @@ script:
       docker build 
         -t "alpine:latest"
         --label "stage=${STAGE}"
-        "${BUILD_DIR}"
+        "${BUILD_DIR}";
     elif [ "${STAGE}" = 'update' ]; then
       docker build 
         -t "alpine:latest"
         --label "stage=${STAGE}"
-        "${UPDATE_DIR}"
+        "${UPDATE_DIR}";
     fi
   
   - docker images;
