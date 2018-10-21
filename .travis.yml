@@ -3,10 +3,6 @@ language: bash
 services:
   - docker
 
-stages:
-  - build
-    env: STAGE=build
-
 env:
   global:
     - g_var=globalvalue
