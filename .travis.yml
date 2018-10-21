@@ -56,3 +56,7 @@ script:
 
 after_script:
   - docker logout
+
+notifications:
+  email:
+    - "${NOTIFICATION_EMAIL}"
