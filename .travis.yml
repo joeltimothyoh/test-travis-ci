@@ -6,12 +6,11 @@ services:
 env:
   global:
     - g_var=globalvalue
+    - BUILD_DIR="build/"
+    - UPDATE_DIR="update/"
   matrix:
-    - foo=1 bar=2
-    #- foo=3 bar=4
-
-stages:
-  - build
+    - foo=1 bar=2 STAGE=build
+    - foo=3 bar=4 STAGE=update
 
 before_script:
   - whoami
@@ -24,6 +23,14 @@ before_script:
 script:
   - echo $g_var
   - echo $foo && echo $bar
+  - echo $STAGE
+
+  - if [ "${STAGE}" = 'build' ]; then
+      BUILD_CONTEXT=${BUILD_DIR}
+    elseif [ "${STAGE}" = 'build' ]; then
+      BUILD_CONTEXT=${UPDATE_DIR};
+    fi
+  - echo $BUILD_CONTEXT
 
   #- docker build -t "$REGISTRY_USER/csgotest" build2/
   #- docker images
@@ -31,42 +38,10 @@ script:
   #- date
 
   #- REGISTRY_GOLDSOURCE='goldsourceservers'
-  - REGISTRY_SOURCE='sourceservers'
-  - docker pull "$REGISTRY_SOURCE/tf"
-  - docker images
+  #- REGISTRY_SOURCE='sourceservers'
+  #- docker pull "$REGISTRY_SOURCE/tf"
+  #- docker images
 
-  # - docker run --rm "$REGISTRY_SOURCE/tf" "printenv && ls -al &&0 ls -al tf/ hl2/"
-  # - date
-
-  # - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf +version +quit"
-  # - date
-
-  # - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf -ip 0.0.0.0 +quit"
-  # - date
-
-  # - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf -ip 0.0.0.0 +maxplayers 8 +quit"
-  # - date
-
-  # - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf -ip 0.0.0.0 +maxplayers 8 +map mvm_decoy +quit"
-  # - date
-
-  # - docker run --rm "$REGISTRY_SOURCE/tf" "srcds_linux -game tf -ip 0.0.0.0 +maxplayers 8 +map mvm_decoy +quit"
-  # - date
-
-  - docker run --rm "$REGISTRY_SOURCE/tf" "apt-get update && apt-get install -y libstdc++6:i386 && linux32 --32bit i386 srcds_linux -game tf +version +quit"
-  - date
-
-  - docker run --rm "$REGISTRY_SOURCE/tf" "apt-get update && apt-get install -y libstdc++6:i386 libcurl4-gnutls-dev:i386 && linux32 --32bit i386 srcds_linux -game tf +version +quit"
-  - date
-
-  - docker run --rm "$REGISTRY_SOURCE/tf" "apt-get update && apt-get install -y libcurl4-gnutls-dev:i386 && linux32 --32bit i386 srcds_linux -game tf +version +quit"
-  - date
-
-  - docker run --rm "$REGISTRY_SOURCE/tf" "linux32 --32bit i386 srcds_run -game tf +version"
-  - date
-
-  #- docker tag alpine $REGISTRY_ORG/alpine:test
-  #- docker push $REGISTRY_ORG/alpine
 
 after_script:
   - docker logout
