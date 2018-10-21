@@ -39,8 +39,6 @@ script:
 
   - docker images;
     docker inspect "alpinetest:latest" -f {{.Config.Labels}};
-    docker inspect "alpinetest:latest" -f '{{.Config.Labels}}';
-    docker inspect "alpinetest:latest" -f "{{.Config.Labels}}";
 
   #- docker build -t "$REGISTRY_USER/csgotest" build2/
   #- docker images
