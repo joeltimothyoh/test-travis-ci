@@ -26,17 +26,17 @@ script:
   - echo $STAGE
 
   - if [ "${STAGE}" = 'build' ]; then
-      docker build 
+      docker build
         -t "alpinetest:latest"
         --label "stage=${STAGE}"
         "${BUILD_DIR}";
     elif [ "${STAGE}" = 'update' ]; then
-      docker build 
+      docker build
         -t "alpinetest:latest"
         --label "stage=${STAGE}"
         "${UPDATE_DIR}";
     fi
-  
+
   - docker images;
     docker inspect "alpinetest:latest" -f {{.Config.Labels}};
     docker inspect "alpinetest:latest" -f '{{.Config.Labels}}';
@@ -59,4 +59,7 @@ after_script:
 
 notifications:
   email:
+    recipients:
     - "${NOTIFICATION_EMAIL}"
+    on_success: always
+    on_failure: always
