@@ -5,6 +5,7 @@ services:
 
 stages:
   - build
+    env: STAGE=build
 
 env:
   global:
@@ -30,7 +31,7 @@ script:
 
   - if [ "${STAGE}" = 'build' ]; then
       BUILD_CONTEXT=${BUILD_DIR};
-    elif [ "${STAGE}" = 'build' ]; then
+    elif [ "${STAGE}" = 'update' ]; then
       BUILD_CONTEXT=${UPDATE_DIR};
     fi
   - echo $BUILD_CONTEXT
