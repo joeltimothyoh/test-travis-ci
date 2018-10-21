@@ -26,11 +26,22 @@ script:
   - echo $STAGE
 
   - if [ "${STAGE}" = 'build' ]; then
-      BUILD_CONTEXT=${BUILD_DIR};
+      docker build 
+        -t "alpine:latest"
+        --label "stage=${STAGE}"
+        "${BUILD_DIR}"
     elif [ "${STAGE}" = 'update' ]; then
-      BUILD_CONTEXT=${UPDATE_DIR};
+      docker build 
+        -t "alpine:latest"
+        --label "stage=${STAGE}"
+        "${UPDATE_DIR}"
     fi
-  - echo $BUILD_CONTEXT
+  
+  - docker images;
+    docker inspect "${REGISTRY}/${GAME}:test" -f {{.Config.Labels}};
+    docker inspect "${REGISTRY}/${GAME}:test" -f '{{.Config.Labels}}';
+    docker inspect "${REGISTRY}/${GAME}:test" -f "{{.Config.Labels}}";
+    docker inspect "${REGISTRY}/${GAME}:test" -f "{{.Config.Labels}}";
 
   #- docker build -t "$REGISTRY_USER/csgotest" build2/
   #- docker images
