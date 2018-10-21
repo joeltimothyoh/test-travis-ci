@@ -41,7 +41,6 @@ script:
     docker inspect "alpinetest:latest" -f {{.Config.Labels}};
     docker inspect "alpinetest:latest" -f '{{.Config.Labels}}';
     docker inspect "alpinetest:latest" -f "{{.Config.Labels}}";
-    docker inspect "alpinetest:latest" -f "{{.Config.Labels}}";
 
   #- docker build -t "$REGISTRY_USER/csgotest" build2/
   #- docker images
@@ -62,4 +61,4 @@ notifications:
     recipients:
     - "${NOTIFICATION_EMAIL}"
     on_success: always
-    on_failure: always 
+    on_failure: always
