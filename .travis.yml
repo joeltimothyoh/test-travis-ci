@@ -5,7 +5,7 @@ services:
 
 env:
   matrix:
-    - TEST_IMAGE=sourceservers/hl2mp command="printenv && ls -al && exec srcds_linux -game hl2mp +version +exit"
+    - TEST_IMAGE=sourceservers/hl2mp COMMAND="printenv && ls -al && exec srcds_linux -game hl2mp +version +exit"
 
 before_script:
   - whoami
@@ -15,8 +15,8 @@ before_script:
 
 script:
   - echo $TEST_IMAGE
-  - echo $command
-  #- docker run "${TEST_IMAGE}" sh -c "${command}"
+  - echo $COMMAND
+  - docker run "${TEST_IMAGE}" sh -c "${COMMAND}"
 
 after_script:
   - date
