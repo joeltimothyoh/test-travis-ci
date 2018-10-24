@@ -4,22 +4,19 @@ services:
   - docker
 
 env:
-  global:
-    - GAME_BIN="srcds/"
-    - GAME="h2mp/"
   matrix:
-    - TEST_IMAGE=sourceservers/hl2mp command="printenv && ls -al && exec ${GAME_BIN} -game ${GAME} +version +exit"
-    
+    - TEST_IMAGE=sourceservers/hl2mp command="printenv && ls -al && exec srcds_linux -game hl2mp +version +exit"
+
 before_script:
   - whoami
   - docker version
   - cat /proc/version
   - df -h
-  #- echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
 
 script:
-  -  echo $TEST_IMAGE
-  -  echo $command
+  - echo $TEST_IMAGE
+  - echo $command
+  #- docker run "${TEST_IMAGE}" sh -c "${command}"
 
 after_script:
-  #- docker logout
+  - date
