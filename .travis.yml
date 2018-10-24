@@ -5,9 +5,10 @@ services:
 
 env:
   global:
-    - test=1
-    - BAR="test2
-    - BAZ=test3
+    - GAME_BIN="srcds/"
+    - GAME="h2mp/"
+  matrix:
+    - TEST_IMAGE=sourceservers/hl2mp command="printenv && ls -al && exec ${GAME_BIN} -game ${GAME} +version +exit"
     
 before_script:
   - whoami
@@ -17,12 +18,8 @@ before_script:
   #- echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
 
 script:
-  - date
-  - echo $TESTVAR
-  - echo $TESTVAR2
-  - echo $test
-  - echo $BAR
-  - echo $BAZ
+  -  echo $TEST_IMAGE
+  -  echo $command
 
 after_script:
   #- docker logout
