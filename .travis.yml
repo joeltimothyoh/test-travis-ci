@@ -1,11 +1,7 @@
-sudo: required
 dist: xenial
 
 services:
   - docker
-
-stages:
-  - build
 
 env:
   global:
