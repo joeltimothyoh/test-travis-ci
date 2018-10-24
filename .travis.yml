@@ -15,7 +15,7 @@ before_script:
 script:
   - echo $TEST_IMAGE
   - echo $COMMAND
-  - docker run --it --rm "${TEST_IMAGE}" "${COMMAND}"
+  - docker run -it --rm "${TEST_IMAGE}" "${COMMAND}"
   - docker run --rm "${TEST_IMAGE}" "${COMMAND}"
 
 after_script:
