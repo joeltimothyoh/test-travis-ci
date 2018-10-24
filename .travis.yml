@@ -5,7 +5,10 @@ services:
 
 env:
   matrix:
-    - TEST_IMAGE=sourceservers/hl2mp COMMAND="printenv && ls -al && exec srcds_linux -game hl2mp +version +exit"
+    #- TEST_IMAGE=sourceservers/hl2mp COMMAND="printenv && ls -al && exec srcds_linux -game hl2mp +version +exit"
+    - TEST_IMAGE=alpine:latest COMMAND="ls"
+    - TEST_IMAGE=alpine:latest COMMAND="ls -al"
+    - TEST_IMAGE=alpine:latest COMMAND="printenv && ls -al"
 
 before_script:
   - whoami
