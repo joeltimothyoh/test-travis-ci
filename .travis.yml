@@ -1,14 +1,11 @@
-dist: xenial
-
 services:
   - docker
 
 env:
   global:
-    - test=1
-    - BAR="test2
-    - BAZ=test3
-    
+    - VAR1=var1
+    - VAR2=var2
+
 before_script:
   - whoami
   - docker version
@@ -18,11 +15,9 @@ before_script:
 
 script:
   - date
-  - echo $TESTVAR
-  - echo $TESTVAR2
-  - echo $test
-  - echo $BAR
-  - echo $BAZ
+  - echo $VAR1
+  - echo $VAR2
+  - echo $VAR_API
 
 after_script:
   #- docker logout
