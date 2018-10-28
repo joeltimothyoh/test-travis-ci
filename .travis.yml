@@ -3,8 +3,9 @@ services:
 
 env:
   matrix:
-    - TEST_IMAGE=sourceservers/hl2mp:latest COMMAND="printenv && ls -al && exec srcds_linux -game hl2mp +version +exit"
-    - TEST_IMAGE=goldsourceservers/valve:latest COMMAND="printenv && ls -al && exec hlds_linux -game valve +version +exit"
+    - TEST_IMAGE=sourceservers/left4dead2:latest COMMAND="printenv && ls -al && exec srcds_linux -game left4dead2 +version +exit"
+    - TEST_IMAGE=sourceservers/csgo:latest COMMAND="printenv && ls -al && exec srcds_linux -game csgo +version +exit"
+    #- TEST_IMAGE=goldsourceservers/valve:latest COMMAND="printenv && ls -al && exec hlds_linux -game valve +version +exit"
 
 before_script:
   - whoami
