@@ -3,7 +3,7 @@ services:
 
 env:
   matrix:
-    - TEST_IMAGE=sourceservers/left4dead2:latest COMMAND="printenv && ls -al && exec srcds_linux -game left4dead2 +version +exit"
+    #- TEST_IMAGE=sourceservers/left4dead2:latest COMMAND="printenv && ls -al && exec srcds_linux -game left4dead2 +version +exit"
     - TEST_IMAGE=sourceservers/csgo:latest COMMAND="printenv && ls -al && exec srcds_linux -game csgo +version +exit"
     #- TEST_IMAGE=goldsourceservers/valve:latest COMMAND="printenv && ls -al && exec hlds_linux -game valve +version +exit"
 
@@ -16,8 +16,11 @@ before_script:
 script:
   - echo $TEST_IMAGE
   - echo $COMMAND
-  - docker run -t --rm "${TEST_IMAGE}" "${COMMAND}"
-  - docker run --rm "${TEST_IMAGE}" "${COMMAND}"
+  
+  - if [ -n "{$TEST_IMAGE}" ]; then
+      travis_wait 30 docker run -t --rm "${TEST_IMAGE}" "${COMMAND}"
+    fi
+  - docker images
 
 after_script:
   - date
