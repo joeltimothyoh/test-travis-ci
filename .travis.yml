@@ -16,9 +16,9 @@ before_script:
 script:
   - echo $TEST_IMAGE
   - echo $COMMAND
-  
+
   - if [ -n "{$TEST_IMAGE}" ]; then
-      travis_wait 30 docker run -t --rm "${TEST_IMAGE}" "${COMMAND}"
+      travis_wait 30 docker run -t --rm "${TEST_IMAGE}" "${COMMAND}";
     fi
   - docker images
 
