@@ -35,7 +35,7 @@ script:
         -t "alpinetest:latest"
         --label "stage=${STAGE}"
         "${UPDATE_DIR}";
-    fi
+    fi || true
 
   - docker images;
     docker inspect "alpinetest:latest" -f {{.Config.Labels}};
