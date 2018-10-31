@@ -3,6 +3,10 @@ language: bash
 services:
   - docker
 
+addons:
+  artifacts:
+    debug: true
+
 env:
   global:
     - g_var=globalvalue
