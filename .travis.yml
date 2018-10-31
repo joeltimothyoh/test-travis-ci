@@ -6,8 +6,8 @@ services:
 env:
   global:
     - g_var=globalvalue
-    - BUILD_DIR="build/foo"
-    - UPDATE_DIR="update/foo"
+    - BUILD_DIR="build"
+    - UPDATE_DIR="update"
   matrix:
     - foo=1 bar=2 STAGE=build
     - foo=3 bar=4 STAGE=update
