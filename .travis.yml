@@ -19,7 +19,7 @@ before_script:
   - df -h
   - free
   - echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
-  - set -e
+  #- set -e
 
 script:
   - echo $g_var
@@ -36,7 +36,7 @@ script:
         -t "alpinetest:latest"
         --label "stage=${STAGE}"
         "${UPDATE_DIR}";
-    fi
+    fi || false
 
   - docker images;
     docker inspect "alpinetest:latest" -f {{.Config.Labels}};
