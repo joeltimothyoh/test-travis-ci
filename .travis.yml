@@ -19,6 +19,7 @@ before_script:
   - df -h
   - free
   - echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
+  - set -e
 
 script:
   - echo $g_var
@@ -35,7 +36,7 @@ script:
         -t "alpinetest:latest"
         --label "stage=${STAGE}"
         "${UPDATE_DIR}";
-    fi || travis_terminate 1
+    fi
 
   - docker images;
     docker inspect "alpinetest:latest" -f {{.Config.Labels}};
@@ -52,4 +53,5 @@ script:
 
 
 after_script:
+  - set +e
   - docker logout
