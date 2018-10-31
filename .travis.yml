@@ -18,8 +18,10 @@ before_script:
   - cat /proc/version
   - df -h
   - free
+
+  - set -e
+
   - echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
-  #- set -e
 
 script:
   - echo $g_var
@@ -53,5 +55,5 @@ script:
 
 
 after_script:
-  #- set +e
   - docker logout
+  - set +e
