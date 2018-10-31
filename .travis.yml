@@ -53,5 +53,5 @@ script:
 
 
 after_script:
-  - set +e
+  #- set +e
   - docker logout
