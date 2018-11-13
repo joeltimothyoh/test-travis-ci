@@ -2,6 +2,10 @@ language: bash
 services:
   - docker
 
+stages:
+  - build
+  - test
+
 env:
   global:
     - g_VAR=g_value
