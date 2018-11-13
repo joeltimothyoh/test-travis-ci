@@ -4,21 +4,35 @@ services:
 
 env:
   global:
-    - VAR1=var1
-    - VAR2=var2
+    - g_VAR=g_value
+  matrix:
+    - m_VAR=m_value1
+    - m_VAR=m_value2
 
 before_script:
   - whoami
-  - docker version
-  - cat /proc/version
+  - cat /etc/*release
   - df -h
+  - free
   #- echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
+  - docker images
 
-script:
-  - date
-  - echo $VAR1
-  - echo $VAR2
-  - echo $VAR_API
+jobs:
+  include:
+    - stage: build
+      script:
+        - date
+        - echo $g_VAR
+        - echo $m_VAR
+        - docker pull alpine
+        - docker images
+    - stage: test
+      script:
+        - date
+        - echo $g_VAR
+        - echo $m_VAR
+        - docker images      
 
 after_script:
+  - echo after script
   #- docker logout
