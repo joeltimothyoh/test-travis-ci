@@ -11,6 +11,8 @@ env:
     - g_VAR=g_value
   matrix:
     - m_VAR=m_value1
+    - m_VAR=m_value2
+    - m_VAR=m_value3
 
 before_script:
   - whoami
