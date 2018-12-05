@@ -8,11 +8,11 @@ services:
 
 env:
   global:
-    - g_VAR=g_value
+    - g_VAR="g_value"
   matrix:
-    - m_VAR=m_value1
-    - m_VAR=m_value2
-    - m_VAR=m_value3
+    - m_VAR="m_value1"
+    - m_VAR="m_value2"
+    - m_VAR="m_value3"
 
 before_script:
   - whoami
