@@ -24,7 +24,7 @@ before_script:
 
 jobs:
   include:
-    - stage: build
+    - stage: stage1
       script:
         - date
         - echo $g_VAR
@@ -32,7 +32,7 @@ jobs:
         - docker pull alpine
         - docker images
         - echo $TRAVIS_BRANCH
-    - stage: test
+    - stage: stage2
       script:
         - date
         - echo $g_VAR
