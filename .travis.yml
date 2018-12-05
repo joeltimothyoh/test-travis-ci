@@ -31,14 +31,14 @@ jobs:
         - echo $m_VAR
         - docker pull alpine
         - docker images
-        - echo TRAVIS_BRANCH
+        - echo $TRAVIS_BRANCH
     - stage: test
       script:
         - date
         - echo $g_VAR
         - echo $m_VAR
         - docker images
-        - echo TRAVIS_BRANCH
+        - echo $TRAVIS_BRANCH
 
 after_script:
   - echo after script
