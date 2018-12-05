@@ -22,23 +22,22 @@ before_script:
   #- echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
   - docker images
 
+script:
+  - date
+  - echo $TRAVIS_BUILD_STAGE_NAME
+  - echo $g_VAR
+  - echo $m_VAR
+
 jobs:
   include:
     - stage: stage1
       script:
         - date
-        - echo $g_VAR
-        - echo $m_VAR
-        - docker pull alpine
-        - docker images
-        - echo $TRAVIS_BRANCH
+        - echo $TRAVIS_BUILD_STAGE_NAME
     - stage: stage2
       script:
         - date
-        - echo $g_VAR
-        - echo $m_VAR
-        - docker images
-        - echo $TRAVIS_BRANCH
+        - echo $TRAVIS_BUILD_STAGE_NAME
 
 after_script:
   - echo after script
