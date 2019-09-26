@@ -15,13 +15,15 @@ env:
     - m_VAR="m_value3"
 
 before_script:
-  - whoami
-  - cat /etc/*release
-  - lscpu
-  - df -h
-  - free
-  - docker info
-  - docker version
+  - | 
+      hostname
+      whoami
+      cat /etc/*release
+      lscpu
+      free
+      df -h
+      docker info
+      docker version
   #- echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
 
 script:
