@@ -15,7 +15,7 @@ env:
     - m_VAR="m_value3"
 
 before_script:
-  - | 
+  - |
       hostname
       whoami
       cat /etc/*release
@@ -37,6 +37,7 @@ script:
 
   - echo valid command
     unknown command
+    echo valid command
 
 # jobs:
 #   include:
