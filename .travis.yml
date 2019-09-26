@@ -11,19 +11,19 @@ env:
     - g_VAR="g_value"
   matrix:
     - m_VAR="m_value1"
-    - m_VAR="m_value2"
-    - m_VAR="m_value3"
+    # - m_VAR="m_value2"
+    # - m_VAR="m_value3"
 
 before_script:
   - |
-      hostname
-      whoami
-      cat /etc/*release
-      lscpu
-      free
-      df -h
-      docker info
-      docker version
+    hostname
+    whoami
+    cat /etc/*release
+    lscpu
+    free
+    df -h
+    docker info
+    docker version
   #- echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
 
   - set -e
