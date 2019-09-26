@@ -35,8 +35,8 @@ script:
   - echo $m_VAR
   # - docker images
 
-  - echo valid command
-    unknown command
+  - echo valid command;
+    unknown command;
     echo valid command
 
 # jobs:
