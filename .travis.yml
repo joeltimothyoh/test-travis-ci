@@ -26,6 +26,8 @@ before_script:
       docker version
   #- echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
 
+  - set -e
+
 script:
   - date
   - echo $TRAVIS_BUILD_STAGE_NAME
@@ -33,17 +35,20 @@ script:
   - echo $m_VAR
   # - docker images
 
-jobs:
-  include:
-    - stage: stage1
-      script:
-        - date
-        - echo $TRAVIS_BUILD_STAGE_NAME
-    - stage: stage2
-      script:
-        - date
-        - echo $TRAVIS_BUILD_STAGE_NAME
+  - echo valid command
+    unknown command
 
-after_script:
-  - echo after script
-  #- docker logout
+# jobs:
+#   include:
+#     - stage: stage1
+#       script:
+#         - date
+#         - echo $TRAVIS_BUILD_STAGE_NAME
+#     - stage: stage2
+#       script:
+#         - date
+#         - echo $TRAVIS_BUILD_STAGE_NAME
+
+# after_script:
+#   - echo after script
+#   #- docker logout
