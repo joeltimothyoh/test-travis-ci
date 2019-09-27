@@ -2,10 +2,6 @@ language: bash
 services:
   - docker
 
-# stages:
-#   - build
-#   - test
-
 env:
   global:
     - g_VAR="g_value"
@@ -24,33 +20,14 @@ before_script:
     df -h
     docker info
     docker version
-  #- echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
 
-  - set -e
-
-script:
-  - date
-  - echo $TRAVIS_BUILD_STAGE_NAME
-  - echo $g_VAR
-  - echo $m_VAR
-  # - docker images
-
-  - | 
-      echo valid command
-      unknown command
-      echo valid command
-
-# jobs:
-#   include:
-#     - stage: stage1
-#       script:
-#         - date
-#         - echo $TRAVIS_BUILD_STAGE_NAME
-#     - stage: stage2
-#       script:
-#         - date
-#         - echo $TRAVIS_BUILD_STAGE_NAME
-
-# after_script:
-#   - echo after script
-#   #- docker logout
+  - |
+    i=0; while true; do
+        echo "Iteration $(( $i+1 )): $(date)"
+        dd if=/dev/zero of="tempfile.$i" bs=1M count=1024
+        ls -al "tempfile.$i"
+        df -h
+        i=$((i + 1))
+        echo
+        sleep 1
+    done
