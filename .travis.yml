@@ -39,7 +39,7 @@ script:
     echo $TRAVIS_BUILD_STAGE_NAME
     echo $g_VAR
     echo $m_VAR
-    travis_wait 20 sleep 15m
+    travis_wait 1 sleep 2m
   # - docker images
 
 # jobs:
