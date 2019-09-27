@@ -2,9 +2,9 @@ language: bash
 dist: xenial
 # services:
 #   - docker
-branches:
-  except:
-   - /.*/
+# branches:
+#   except:
+#    - /.*/
 
 # stages:
 #   - build
