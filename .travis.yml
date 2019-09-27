@@ -21,6 +21,7 @@ before_script:
     docker info
     docker version
 
+script:
   - |
     i=0; while true; do
         echo "Iteration $(( $i+1 )): $(date)"
