@@ -20,6 +20,7 @@ env:
 
 before_script:
   - |
+    travis_wait 10
     hostname
     whoami
     cat /etc/*release
