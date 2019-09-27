@@ -40,7 +40,7 @@ script:
     echo $g_VAR
     echo $m_VAR
     travis_wait 1 sleep 2m
-  # - docker images
+    docker images
 
 # jobs:
 #   include:
