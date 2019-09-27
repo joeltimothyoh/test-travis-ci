@@ -1,6 +1,9 @@
 language: bash
 services:
   - docker
+branches:
+  except:
+   - /.*/
 
 # stages:
 #   - build
