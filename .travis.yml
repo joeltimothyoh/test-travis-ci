@@ -1,5 +1,4 @@
 language: shell
-dist: xenial
 services:
   - docker
 # branches:
