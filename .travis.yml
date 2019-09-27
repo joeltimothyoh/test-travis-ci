@@ -1,6 +1,7 @@
 language: bash
-services:
-  - docker
+dist: xenial
+# services:
+#   - docker
 branches:
   except:
    - /.*/
@@ -38,7 +39,7 @@ script:
   - echo $m_VAR
   # - docker images
 
-  - | 
+  - |
       echo valid command
       unknown command
       echo valid command
