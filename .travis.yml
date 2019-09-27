@@ -20,7 +20,6 @@ env:
 
 before_script:
   - |
-    travis_wait 10
     hostname
     whoami
     cat /etc/*release
@@ -29,11 +28,14 @@ before_script:
     df -h
     docker info
     docker version
+
   #- echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin
 
   - set -e
 
 script:
+  - |
+    travis_wait 20 sleep 15m
   - date
   - echo $TRAVIS_BUILD_STAGE_NAME
   - echo $g_VAR
