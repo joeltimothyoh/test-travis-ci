@@ -41,6 +41,8 @@ script:
     echo $m_VAR
     travis_wait 1 sleep 2m
     docker images
+    apt-get update
+    apt-get instal htop
 
 # jobs:
 #   include:
