@@ -5,7 +5,7 @@ services:
 
 branches:
   except:
-   - /.*/
+   - /nothing/
 
 addons:
   artifacts:
