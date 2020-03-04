@@ -3,10 +3,6 @@ language: bash
 services:
   - docker
 
-branches:
-  except:
-   - /.*/
-
 addons:
   artifacts:
     debug: true
